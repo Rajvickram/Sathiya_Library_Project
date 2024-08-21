@@ -46,6 +46,39 @@
             color: #fff;
         }
     </style>
+
+    <script>
+        $(document).ready(function() {
+            btnLogin();
+        })
+
+        var btnLogin = function() {
+            $('.btn_login').click(function() {
+                if(validate()) {
+                    alert('Submitted Successfully');
+                };
+            });
+        };
+
+        var validate = function() {
+            $('.text-error').html('');
+
+            var email = $.trim($('#txt_email_address').val());
+            var pwd = $.trim($('#txt_password').val());
+
+            if(email === '') {
+                $('.text-error').html('Enter Email Here');
+                $('#txt_email_address').focus();
+                return false;
+            }
+            if(pwd === '') {
+                $('.text-error').html('Enter Password Here');
+                $('#txt_password').focus();
+                return false;
+            }
+            return true;
+        }
+    </script>
 </head>
 
 <body>
@@ -59,6 +92,7 @@
                                 <div class="p-5">
                                     <div class="mb-5">
                                         <h3 class="h4 font-weight-bold text-theme">Login</h3>
+                                        <h5 class="text-error"></h5>
                                     </div>
 
                                     <h6 class="h5 mb-0">Welcome back!</h6>
